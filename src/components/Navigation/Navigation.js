@@ -54,7 +54,7 @@ class Navigation extends Component {
               {/* <div className="right">
               </div> */}
             </Nav>
-            <Nav>
+            <Nav className="navSearch">
               {/* <Nav.Link href="#deets">More deets</Nav.Link> */}
               {/* <Nav.Link eventKey={2} href="#memes">
         Dank memes
