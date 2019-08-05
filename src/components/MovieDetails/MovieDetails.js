@@ -1,7 +1,7 @@
 // component about movie details
 import React, { Component } from "react";
-import FavoriteButton from "../../movFav.png";
-import RemoveButton from "../../movFavMinus.png";
+// import FavoriteButton from "../../movFav.png";
+// import RemoveButton from "../../movFavMinus.png";
 import Axios from "axios";
 import Config from "../../config";
 
@@ -27,7 +27,7 @@ class MovieInfo extends Component {
         movie: results
       }));
     });
-    const category = Config.serverURL +`/genre/`;
+    const category = Config.serverURL + `/genre/`;
     Axios.get(category).then(res => {
       let results = res.data;
       this.setState(prevState => ({
@@ -42,14 +42,14 @@ class MovieInfo extends Component {
     if (!userId) {
       return this.props.history.push("/login");
     } else {
-      Axios.get(Config.serverURL +`/user/${userId}`).then(user => {
+      Axios.get(Config.serverURL + `/user/${userId}`).then(user => {
         let filteredArray = user.data.favorites.filter(favorites => {
           return favorites._id === movieId;
         });
         if (filteredArray.length > 0) {
         } else
           Axios.put(
-            Config.serverURL +`/user/add/${userId}/${movieId}`,
+            Config.serverURL + `/user/add/${userId}/${movieId}`,
             {},
             {
               headers: { Authorization: "Bearer " + localStorage.token }
@@ -64,14 +64,14 @@ class MovieInfo extends Component {
     if (!userId) {
       return this.props.history.push("/login");
     } else {
-      Axios.get(Config.serverURL +`/user/${userId}`).then(user => {
+      Axios.get(Config.serverURL + `/user/${userId}`).then(user => {
         let filteredArray = user.data.favorites.filter(favorites => {
           return favorites._id === movieId;
         });
         if (filteredArray.length === 0) {
         } else
           Axios.put(
-            Config.serverURL +`/user/remove/${userId}/${movieId}`,
+            Config.serverURL + `/user/remove/${userId}/${movieId}`,
             {},
             {
               headers: { Authorization: "bearer " + localStorage.token }
@@ -123,21 +123,23 @@ class MovieInfo extends Component {
                   onClick={this.handleAddFavorite}
                   className="favoriteButton"
                 >
-                  <img
+                  Add Favorite
+                  {/* <img
                     src={FavoriteButton}
                     alt="favorite-button"
                     title="Add Movie"
-                  />
+                  /> */}
                 </button>
                 <button
                   onClick={this.handleRemoveFavorite}
                   className="favoriteButton"
                 >
-                  <img
+                  Remove Favorite
+                  {/* <img
                     src={RemoveButton}
                     alt="remove-button"
                     title="Remove Movie"
-                  />
+                  /> */}
                 </button>
               </p>
             </article>

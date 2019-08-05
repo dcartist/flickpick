@@ -62,9 +62,13 @@ class Navigation extends Component {
               ) : (
                 " "
               )}
-              <div className="right">
-                <Search {...this.props} />
-              </div>
+              {window.location.href === "http://localhost:3000/movies" ? (
+                <div className="nav-link right">
+                  <Search {...this.props} />
+                </div>
+              ) : (
+                ""
+              )}
             </Nav>
             <Nav />
           </Navbar.Collapse>

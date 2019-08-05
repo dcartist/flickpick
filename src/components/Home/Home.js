@@ -7,7 +7,7 @@ class Home extends Component {
         <div className="embed-container">
           <iframe
             title="sweet-movie"
-            src="https://player.vimeo.com/video/344644642?autoplay=1"
+            src="https://player.vimeo.com/video/344644642?autoplay=1&?muted=1&background=1"
             frameBorder="0"
             webkitallowfullscreen="true"
             mozallowfullscreen="true"

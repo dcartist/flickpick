@@ -19,25 +19,27 @@ class Genre extends Component {
     this.getMoviesOfGenre();
   }
 
-  prev(){
+  prev() {
     var p = this.state.page - 1;
-    if(p>=0){
-      this.setState({page: p}, _ => this.getMoviesOfGenre());
+    if (p >= 0) {
+      this.setState({ page: p }, _ => this.getMoviesOfGenre());
     }
   }
 
-  next(){
+  next() {
     var p = this.state.page + 1;
-    if(p<this.state.totalPages){
-      this.setState({page: p}, _ => this.getMoviesOfGenre());
+    if (p < this.state.totalPages) {
+      this.setState({ page: p }, _ => this.getMoviesOfGenre());
     }
   }
 
   getMoviesOfGenre() {
     const url = Config.serverURL + "/genre/id/";
-    Axios.get(url + this.props.match.params.id + '?page=' + this.state.page).then(res => {
+    Axios.get(
+      url + this.props.match.params.id + "?page=" + this.state.page
+    ).then(res => {
       this.setState(prevState => ({
-        movieInfo: res.data.result, 
+        movieInfo: res.data.result,
         totalPages: res.data.totalPages
       }));
     });
@@ -45,26 +47,32 @@ class Genre extends Component {
 
   render() {
     let list = this.state.movieInfo.map((item, index) => {
-        return (
-          <div className="movie-list" key={index}>
-            <Movie
-              title={item.title}
-              overview={item.overview}
-              posterImage={item.posterImage}
-              id={item.id}
-              userInfo={this.props.userInfo}
-            />
-          </div>
-        );
+      return (
+        <div className="movie-list" key={index}>
+          <Movie
+            title={item.title}
+            overview={item.overview}
+            posterImage={item.posterImage}
+            id={item.id}
+            userInfo={this.props.userInfo}
+          />
+        </div>
+      );
     });
     return (
       <div className="columns">
-          {list}
-        <br/>
-        <div style={{display: "block"}} className="GenreBox">
-          <button className="btn btn-primary" onClick={this.prev}>Previous Page</button>
-          <label>{this.state.page+1} / {this.state.totalPages} </label>
-          <button className="btn btn-primary" onClick={this.next}>Next Page</button>
+        {list}
+        <br />
+        <div style={{ display: "block" }} className="GenreBox">
+          <button className="btn btn-primary" onClick={this.prev}>
+            Previous Page
+          </button>
+          <label>
+            {this.state.page + 1} / {this.state.totalPages}{" "}
+          </label>
+          <button className="btn btn-primary" onClick={this.next}>
+            Next Page
+          </button>
         </div>
       </div>
     );
