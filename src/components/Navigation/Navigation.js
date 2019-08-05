@@ -62,7 +62,7 @@ class Navigation extends Component {
               ) : (
                 " "
               )}
-              {window.location.href === "http://localhost:3000/movies" ? (
+              {this.props.location.pathname === "/movies" ? (
                 <div className="nav-link right">
                   <Search {...this.props} />
                 </div>
