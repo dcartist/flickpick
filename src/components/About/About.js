@@ -26,11 +26,7 @@ class About extends Component {
                 <li>CSS</li>
                 <li>HTML</li>
             </ul>
-            <h3>Re<span>po</span> Li<span>st</span></h3>
-            <ul>
-                <li><a rel="noopener noreferrer" href="https://github.com/ashanevs/flickpick" target="_blank">FlickPick React App</a></li>
-                <li><a rel="noopener noreferrer" href="https://github.com/ashanevs/flickpick-api" target="_blank">FlickPick App Api</a></li>
-            </ul>
+          
             <h3>Mode<span>ls</span> Us<span>ed</span></h3>
             <ul>
                 <h4>User</h4>
