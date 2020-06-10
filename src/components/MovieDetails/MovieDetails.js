@@ -4,6 +4,7 @@ import FavoriteButton from "../../movFav.png";
 import RemoveButton from "../../movFavMinus.png";
 import Axios from "axios";
 import Config from "../../config";
+import DefaultImage from '../Image/imagemovie.jpg'
 
 class MovieInfo extends Component {
   constructor(props) {
@@ -13,6 +14,14 @@ class MovieInfo extends Component {
       genres: []
     };
   }
+
+  addDefaultSrc = (evt) => {
+    evt.preventDefault()
+    evt.target.src = DefaultImage
+
+  }
+
+
   goHome = () => {
     this.props.history.push("/");
     // not a hard direct
@@ -110,7 +119,7 @@ class MovieInfo extends Component {
       return (
         <div className="movieDetails" id="movie-info" key={index}>
           <div className="moviePoster">
-            <img src={imgName} alt="Movie Poster" />
+            <img src={imgName} alt="Movie Poster" onError={this.addDefaultSrc}/>
           </div>
 
           <div>

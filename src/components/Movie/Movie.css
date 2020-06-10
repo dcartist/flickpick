@@ -1,0 +1,13 @@
+img[class] { 
+    width: 100%;  
+  }
+
+  .adjustedImg{
+    width: 100%; 
+    height: 500px;
+    object-fit: fill;
+  }
+
+  .BodyCard{
+      height: 140px;
+  }
