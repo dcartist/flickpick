@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import Movie from "../Movie/Movie";
 import Config from "../../config";
+import "./Genre.css"
 
 class Genre extends Component {
   constructor(props) {
@@ -44,30 +45,40 @@ class Genre extends Component {
   }
 
   render() {
-    let list = this.state.movieInfo.map((item, index) => {
-        return (
-          <div className="movie-list" key={index}>
-            <Movie
-              title={item.title}
-              overview={item.overview}
-              posterImage={item.posterImage}
-              id={item.id}
-              userInfo={this.props.userInfo}
-            />
-          </div>
-        );
-    });
-    return (
-      <div className="columns">
-          {list}
-        <br/>
-        <div style={{display: "block"}} className="GenreBox">
-          <button className="btn btn-primary" onClick={this.prev}>Previous Page</button>
-          <label>{this.state.page+1} / {this.state.totalPages} </label>
-          <button className="btn btn-primary" onClick={this.next}>Next Page</button>
-        </div>
-      </div>
-    );
+    if(this.state.movieInfo.length == 0){
+      return (<div className="WaitingMovie">
+        <h2>Loading Movie Data...</h2>
+        <div className="loader"></div>
+      </div>)
+          } else {
+            let list = this.state.movieInfo.map((item, index) => {
+              return (
+                <div className="movie-list" key={index}>
+                  <Movie
+                    title={item.title}
+                    overview={item.overview}
+                    posterImage={item.posterImage}
+                    id={item.id}
+                    userInfo={this.props.userInfo}
+                  />
+                </div>
+              );
+          });
+          return (
+            <div className="columns">
+                {list}
+              <br/>
+              <div style={{display: "block"}} className="GenreBox">
+                <button className="btn btn-primary" onClick={this.prev}>Previous Page</button>
+                <label>{this.state.page+1} / {this.state.totalPages} </label>
+                <button className="btn btn-primary" onClick={this.next}>Next Page</button>
+              </div>
+            </div>
+          );
+
+          }
+
+   
   }
 }
 
