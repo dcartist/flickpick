@@ -26,7 +26,7 @@ React.js, React-bootstrap, React-router, Axios
 
 Back end github repository found at: https://github.com/ashanevs/flickpick-api
 
-Deployed app: http://flickpick.surge.sh
+Deployed app: https://flickpick.vercel.app/ updated (2020)
 
 # Getting Started / Installation Instructions
 
